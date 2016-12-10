@@ -1,6 +1,6 @@
 window.globals = {
-	screenWidth: 600,
-	screenHeight: 600,
+	screenWidth: 500,
+	screenHeight: 500,
 
 	assets: {
 		graphs: {

@@ -1,3 +1,6 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
 window.states = window.states || {};
 window.states.gameState = (function() {
 
@@ -49,7 +52,7 @@ window.states.gameState = (function() {
 	};
 
 	var initWorld = function() {
-		game.world.resize(600, 600);
+		game.world.resize(500, 500);
 	};
 
 	var populate = function() {
