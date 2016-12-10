@@ -1,6 +1,6 @@
-window.globals = {
-	screenWidth: 500,
-	screenHeight: 500,
+export default {
+	roomWidth: 500,
+	roomHeight: 500,
 
 	assets: {
 		graphs: {
@@ -25,10 +25,33 @@ window.globals = {
 		left: 'LEFT',
 	},
 
-	collectMode: 'gravity'
-};
+	towers: {
+		cannon: {
+			price: 60,
+		},
+		fire: {
+			price: 60,
+		},
+		water: {
+			price: 60,
+		},
+		electric: {
+			price: 60,
+		},
+	},
 
-window.state = {
-	processRegistry: {},
-	controls: {}
+	attackers: {
+		square: {
+			weakVs: 'fire',
+			strongVs: 'water',
+		},
+		triangle: {
+			weakVs: 'water',
+			strongVs: 'electric',
+		},
+		circle: {
+			weakVs: 'electric',
+			strongVs: 'fire',
+		},
+	},
 };
