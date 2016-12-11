@@ -153,7 +153,6 @@ function addConstructionSites(buildState) {
             }
 
             let adj = accumulateAdjacents(buildState.room, buildAdjacents(i, j, true));
-            console.log("site:",i,j,adj);
 
             if (adj > 0) {
                 buildState.room[i][j] = '*';
