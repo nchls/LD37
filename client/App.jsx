@@ -176,13 +176,13 @@ class Towers extends React.Component {
 class Attackers extends React.Component {
 	render() {
 		return (
-			<div className="attackers">{ this.props.attackers.map( (attacker, index) => {
-						return <li key={ index }>
-							<button>
-								{ attacker }
-							</button>
-						</li>
-					} ) }</div>
+			<div className="attackers">
+				{ this.props.attackers.map( (attacker, index) => {
+					return <li key={ index }>
+						{ attacker }
+					</li>
+				} ) }
+			</div>
 		);
 	}
 }
