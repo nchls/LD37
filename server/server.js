@@ -6,19 +6,19 @@ var deployment = require('./deployment');
 var server = new hapi.Server();
 
 server.connection({
-	port: 10853
+    port: 10853
 });
 
 server.route({
-	method: 'GET',
-	path: '/_data/room',
-	handler: room.createRoom
+    method: 'GET',
+    path: '/_data/room',
+    handler: room.createRoom
 });
 
 server.route({
-	method: 'GET',
-	path: '/_data/room/{roomId*}',
-	handler: room.getRoom
+    method: 'GET',
+    path: '/_data/room/{roomId*}',
+    handler: room.getRoom
 });
 
 server.route({
@@ -28,5 +28,5 @@ server.route({
 });
 
 server.start(function() {
-	console.log('Server running at:', server.info.uri);
+    console.log('Server running at:', server.info.uri);
 });
