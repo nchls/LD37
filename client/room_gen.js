@@ -77,20 +77,17 @@ function generateNextCoord(x, y) {
 function accumulateAdjacents(room, adjacents) {
     let usedAdjacent = 0;
 
-    // FIXME - What am I doing.
-    try {
-
-        adjacents.forEach(function(adjacent) {
+    adjacents.forEach(function(adjacent) {
+        // FIXME - What am I doing.
+        if (room[adjacent.x] && room[adjacent.x][adjacent.y]) {
 
             if (room[adjacent.x][adjacent.y] !== '.' &&
                 room[adjacent.x][adjacent.y] !== '*'
             ) {
                 usedAdjacent++;
             }
-        })
-    } catch(e) {
-        // Wat.
-    }
+        }
+    });
 
     return usedAdjacent;
 }
@@ -104,7 +101,7 @@ function buildAdjacents(x, y, corners) {
     ];
 
     if (corners) {
-        adjacents.concat([
+        adjacents = adjacents.concat([
             {x: x + 1, y: y + 1},
             {x: x - 1, y: y - 1},
             {x: x - 1, y: y + 1},
