@@ -2,7 +2,7 @@ var pg = require('pg'),
 	q = require('q'),
 	_ = require('lodash');
 
-var private = require('../private');
+var private = require('./private');
 
 var conString = 'postgres://' + private.db.user + ':' + private.db.pass + '@' + private.db.host + '/' + private.db.name;
 
