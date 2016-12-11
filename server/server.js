@@ -12,7 +12,7 @@ var createRoom = function(request, reply) {
 
 var getRoom = function(request, reply) {
 	var roomId = request.params.roomId;
-	reply('returning room ${roomId}');
+	reply(`returning room ${roomId}`);
 };
 
 server.route({
