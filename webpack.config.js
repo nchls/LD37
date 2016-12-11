@@ -3,9 +3,8 @@ var webpack = require('webpack');
 var webpackDevServer = require('webpack-dev-server');
 var htmlPlugin = require('html-webpack-plugin');
 var extractTextPlugin = require('extract-text-webpack-plugin');
-var DashboardPlugin = require('webpack-dashboard/plugin');
 
- module.exports = {
+module.exports = {
 	context: path.join(__dirname),
 	entry: path.join(__dirname, 'client', 'client.js'),
 	output: {
@@ -16,8 +15,7 @@ var DashboardPlugin = require('webpack-dashboard/plugin');
 		new htmlPlugin({
 			template: path.join(__dirname, 'client', 'index.html'),
 		}),
-		new extractTextPlugin('style.css'),
-		new DashboardPlugin()
+		new extractTextPlugin('style.css')
 	],
 	devtool: 'sourcemap',
 	module: {
@@ -32,6 +30,12 @@ var DashboardPlugin = require('webpack-dashboard/plugin');
 				loader: extractTextPlugin.extract(
 					'css-loader?sourceMap!' +
 					'less-loader?sourceMap'
+				)
+			},
+			{
+				test: /\.css$/,
+				loader: extractTextPlugin.extract(
+					'css-loader'
 				)
 			}
 		]

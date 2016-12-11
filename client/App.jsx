@@ -1,4 +1,5 @@
 import React from 'react';
+import normalize from 'normalize.css';
 
 import phaserController from './phaserController';
 import style from './style.less';
@@ -35,6 +36,31 @@ export default class App extends React.Component {
 						username: 'Ravenaq',
 						userLocation: 'Merrimack, NH, USA'
 					},
+					{
+						waveNumber: 3,
+						username: 'Bunnicula',
+						userLocation: 'Somerville, MA, USA'
+					},
+					{
+						waveNumber: 4,
+						username: '2scary4u',
+						userLocation: 'Eugene, OR, USA'
+					},
+					{
+						waveNumber: 5,
+						username: 'Kanto55',
+						userLocation: 'Austin, TX, USA'
+					},
+					{
+						waveNumber: 6,
+						username: 'Mouse, Mickey Mouse',
+						userLocation: 'Ft. Lauderdale, FL, USA'
+					},
+					{
+						waveNumber: 7,
+						username: 'Llewellyn',
+						userLocation: 'Freedom, MO, USA'
+					},
 				]
 			},
 			towers: [
@@ -59,6 +85,7 @@ export default class App extends React.Component {
 				'square',
 				'circle',
 				'triangle',
+				'heavenly soccer ball',
 			],
 		});
 	}
@@ -82,7 +109,7 @@ class Room extends React.Component {
 				className="room" 
 				id="room"
 				ref={ (el) => { 
-					phaserController.initializeRoom(el, this.props.roomState);
+					phaserController.initializeRoom(el, this.props.room);
 				} }>
 				room
 			</div>
@@ -93,19 +120,52 @@ class Room extends React.Component {
 class RoomData extends React.Component {
 	render() {
 		return (
-			<div className="room-data">room data</div>
+			<div className="room-data">
+				<table>
+					<thead>
+						<tr>
+							<th>Wave</th>
+							<th>Player</th>
+						</tr>
+					</thead>
+					<tbody>
+						{ this.props.room.waves.map( (wave) => {
+							return (
+								<tr key={ wave.waveNumber }>
+									<td>
+										{ wave.waveNumber }
+									</td>
+									<td>
+										<div className="username">
+											{ wave.username }
+										</div>
+										{ wave.userLocation && (
+											<div className="location">
+												{ wave.userLocation }
+											</div> 
+										) }
+									</td>
+								</tr>
+							);
+						} ) }
+					</tbody>
+				</table>
+			</div>
 		);
 	}
 }
 
 class Towers extends React.Component {
 	render() {
-		console.log(this.props);
 		return (
 			<div className="towers">
 				<ul>
-					{ this.props.towers.map( (tower) => {
-						return <li>{ tower.type }</li>
+					{ this.props.towers.map( (tower, index) => {
+						return <li key={ index }>
+							<button>
+								{ tower.type }
+							</button>
+						</li>
 					} ) }
 				</ul>
 			</div>
@@ -116,7 +176,13 @@ class Towers extends React.Component {
 class Attackers extends React.Component {
 	render() {
 		return (
-			<div className="attackers">attackers</div>
+			<div className="attackers">{ this.props.attackers.map( (attacker, index) => {
+						return <li key={ index }>
+							<button>
+								{ attacker }
+							</button>
+						</li>
+					} ) }</div>
 		);
 	}
 }
