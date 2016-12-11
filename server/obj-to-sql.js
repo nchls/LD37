@@ -1,10 +1,10 @@
 var _ = require('lodash');
 
-var room = require('./models/room');
-var player = require('./models/player');
-var playerroom = require('./models/playerroom');
-var wave = require('./models/wave');
-var deployment = require('./models/deployment');
+var room = require('../models/room');
+var player = require('../models/player');
+var playerroom = require('../models/playerroom');
+var wave = require('../models/wave');
+var deployment = require('../models/deployment');
 
 init = function() {
 	var output = '';
