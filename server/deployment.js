@@ -10,8 +10,10 @@ exports.createDeployment = function(request, reply) {
         wave: waveId,
         player: playerId,
         towers: towers
-    }]);
+    }])
+        .then((results) => reply('returning newly created deployment'))
+        .catch((err)=>reply(err));
 
-    reply('returning newly created deployment');
+
 };
 
