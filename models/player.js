@@ -8,6 +8,12 @@ module.exports = (function() {
 					maxLength: '20'
 				}
 			},
+			uuid: {
+				type: 'varchar',
+				validation: {
+					maxLength: '50'
+				}
+			},
 			location: {
 				type: 'geography',
 				validation: {
