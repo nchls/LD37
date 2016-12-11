@@ -23,7 +23,7 @@ export default class App extends React.Component {
 					'*pp*******',
 					'*p**pppp**',
 					'*pppp**pp*',
-					'********e.',
+					'********e*',
 				],
 				waves: [
 					{
@@ -92,7 +92,7 @@ export default class App extends React.Component {
 
 	render() {
 		return (
-			<div className="">
+			<div className="container">
 				<Towers {...this.state}/>
 				<RoomData {...this.state}/>
 				<Room {...this.state}/>
@@ -111,7 +111,6 @@ class Room extends React.Component {
 				ref={ (el) => { 
 					phaserController.initializeRoom(el, this.props.room);
 				} }>
-				room
 			</div>
 		);
 	}
@@ -121,6 +120,7 @@ class RoomData extends React.Component {
 	render() {
 		return (
 			<div className="room-data">
+				<h2>Room</h2>
 				<table>
 					<thead>
 						<tr>
@@ -159,10 +159,11 @@ class Towers extends React.Component {
 	render() {
 		return (
 			<div className="towers">
+				<h2>Towers</h2>
 				<ul>
 					{ this.props.towers.map( (tower, index) => {
 						return <li key={ index }>
-							<button>
+							<button className="tower">
 								{ tower.type }
 							</button>
 						</li>
@@ -177,8 +178,9 @@ class Attackers extends React.Component {
 	render() {
 		return (
 			<div className="attackers">
+				<h2>Attackers</h2>
 				{ this.props.attackers.map( (attacker, index) => {
-					return <li key={ index }>
+					return <li key={ index } className="attacker">
 						{ attacker }
 					</li>
 				} ) }
