@@ -1,30 +1,30 @@
 var hapi = require('hapi');
 
+var room = require('./room');
+var deployment = require('./deployment');
+
 var server = new hapi.Server();
 
 server.connection({
 	port: 10853
 });
 
-var createRoom = function(request, reply) {
-	reply('returning newly created room');
-};
-
-var getRoom = function(request, reply) {
-	var roomId = request.params.roomId;
-	reply('returning room ${roomId}');
-};
-
 server.route({
 	method: 'GET',
 	path: '/_data/room',
-	handler: createRoom
+	handler: room.createRoom
 });
 
 server.route({
 	method: 'GET',
 	path: '/_data/room/{roomId*}',
-	handler: getRoom
+	handler: room.getRoom
+});
+
+server.route({
+    method: 'POST',
+    path: '/_data/deployment',
+    handler: deployment.createDeployment
 });
 
 server.start(function() {
