@@ -1,11 +1,6 @@
-/**
- * Created by sirouse on 12/11/16.
- */
-
 /*
-
+ * Room Generation Logic
  */
-
 
 function initRoom( width, height ) {
     const foo = new Array(width);
@@ -52,7 +47,7 @@ function isEdge(x, y, buildState) {
 function isEdgeAllowed(x, y, buildState) {
 
     // Check edge
-    if (buildState.currentLength > buildState.minLength) {
+    if (buildState.currentLength >= buildState.minLength) {
         // Only inside squares
         if ((x === 0 || x === buildState.width - 1) ||
             (y === 0 || y === buildState.height - 1)) {
@@ -165,6 +160,9 @@ function addConstructionSites(buildState) {
 
 
 function makeRoom( width, height, minLength) {
+    
+    // As a side-note, the max value for minLength seems to be ~40% of width * height
+    
     const room = initRoom(width, height);
     const startPoint = getStart(width, height);
     let building = true;
@@ -203,9 +201,6 @@ function makeRoom( width, height, minLength) {
             }
         }
 
-        // if (buildState.currentLength > 20) {
-        //     building = false;
-        // }
         if (iteration > width * height * 10) {
             console.log("FAIL");
             building = false;
@@ -220,9 +215,9 @@ function makeRoom( width, height, minLength) {
 
 
 function makeRoomSafe(width, height, minLength) {
-    let attempts = 0;
-    let successful = false;
-    let room;
+    let attempts = 0,
+        successful = false,
+        room;
 
     do {
         room = makeRoom(width, height, minLength);
